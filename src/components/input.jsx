@@ -5,13 +5,16 @@ import PropTypes from "prop-types";
 const Input = ({ id, type, label, placeholder, value, onChange }) => {
     return (
         <div>
-            <label htmlFor={id}>{label}</label>
+            <label className={styles.label} htmlFor={id}>
+                {label}
+            </label>
             <input
                 type={type}
                 id={id}
                 value={value}
                 placeholder={placeholder}
                 onChange={onChange}
+                className={styles.input}
             />
         </div>
     );

@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 
 const Button = ({ type, label, onClick }) => {
     return (
-        <div>
-            <button type={type} onClick={onClick}>
+        <div className={styles.buttonDiv}>
+            <button className={styles.button} type={type} onClick={onClick}>
                 {label}
             </button>
         </div>

@@ -7,8 +7,7 @@
     --lightGrey: #dddddd;
     --red: #c01f1f;
     --background: #f5f8fb;
-    --bigHeading: 24px;
-    --heading: 18px;
+    --heading: 24px;
     --subHeading: 16px;
     --normal: 14px;
     --footNote: 12px;
@@ -27,4 +26,27 @@
     box-sizing: border-box;
     font-size: var(--normal);
     font-weight: var(--regular);
+    background: var(--white);
+}
+
+.container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+h1 {
+    font-size: var(--heading);
+    font-weight: var(--medium);
+    text-align: center;
+}
+
+h2 {
+    font-size: var(--normal);
+    color: var(--grey);
+    text-align: center;
+    font-weight: var(--normal);
 }

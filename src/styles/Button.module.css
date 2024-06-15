@@ -1,0 +1,14 @@
+.buttonDiv {
+    text-align: center;
+}
+
+.button {
+    margin-top: 16px;
+    width: 150px;
+    padding: 16px;
+    background-color: var(--blue);
+    border-radius: 10px;
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+}

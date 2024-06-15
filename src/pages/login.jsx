@@ -11,6 +11,7 @@ import {
 } from "../util";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import styles from "../styles/Login.module.css";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -21,7 +22,7 @@ const Login = () => {
     const device = getDeviceId();
     const token = getAuthenticationToken();
     if (token && token !== "") {
-        navigate("/home");
+        GoToHome();
     }
 
     const HandleSubmit = (e) => {
@@ -45,6 +46,14 @@ const Login = () => {
         setPassword("");
     };
 
+    const GoToHome = () => {
+        navigate("/home");
+    };
+
+    const GoToRegister = () => {
+        navigate("/register");
+    };
+
     const user = useSelector((state) => state.user.user);
     const apiError = useSelector((state) => state.user.error);
     const apiToken = useSelector((state) => state.user.authenticationToken);
@@ -52,32 +61,44 @@ const Login = () => {
     useEffect(() => {
         if (user && apiToken) {
             setAuthenticationToken(apiToken);
-            navigate("/home");
+            GoToHome();
             ClearState();
         }
     }, [user, apiToken, navigate]);
 
     return (
-        <form>
-            <Input
-                id="email"
-                type="email"
-                placeholder="eg. johndoe@abc.xyz"
-                label="Email ID"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <Input
-                id="password"
-                type="password"
-                placeholder="eg. ********"
-                label="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <p>{error || apiError}</p>
-            <Button type="submit" label="Login now" onClick={HandleSubmit} />
-        </form>
+        <div className="container">
+            <h1>Log in to your account</h1>
+            <h2>Please provide your account credentials.</h2>
+            <form className={styles.form}>
+                <Input
+                    id="email"
+                    type="email"
+                    placeholder="eg. johndoe@abc.xyz"
+                    label="Email ID"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <Input
+                    id="password"
+                    type="password"
+                    placeholder="eg. ********"
+                    label="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <p className={styles.error}>* {error || apiError}</p>
+                <Button
+                    type="submit"
+                    label="Login now"
+                    onClick={HandleSubmit}
+                />
+                <p className={styles.registerLink}>
+                    Don’t have an account?
+                    <a onClick={GoToRegister}>Register now</a>
+                </p>
+            </form>
+        </div>
     );
 };
 

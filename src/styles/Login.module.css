@@ -1,0 +1,21 @@
+.form {
+    margin-top: 32px;
+}
+
+.error {
+    color: var(--red);
+    text-align: center;
+}
+
+.registerLink {
+    color: var(--grey);
+    margin-top: 16px;
+    text-align: center;
+}
+
+.registerLink a {
+    color: var(--blue);
+    cursor: pointer;
+    font-weight: var(--medium);
+    margin-left: 8px;
+}

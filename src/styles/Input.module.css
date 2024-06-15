@@ -1,0 +1,13 @@
+.label {
+    color: var(--grey);
+    display: block;
+}
+
+.input {
+    margin: 8px 0 16px 0;
+    width: 100%;
+    padding: 16px;
+    background-color: var(--background);
+    border-radius: 10px;
+    border: none;
+}
