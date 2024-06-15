@@ -2,10 +2,10 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const loginUser = createAsyncThunk(
-    "user/loginUser",
+    "users/login",
     async (userData, { rejectWithValue }) => {
         try {
-            const response = await axios.post("/api/login", userData);
+            const response = await axios.post("/users/login", userData);
             return response.data;
         } catch (error) {
             return rejectWithValue(error.response.data);
@@ -13,11 +13,23 @@ export const loginUser = createAsyncThunk(
     }
 );
 
-export const logoutUser = createAsyncThunk(
-    "user/logoutUser",
+export const registerUser = createAsyncThunk(
+    "users/register",
+    async (userData, { rejectWithValue }) => {
+        try {
+            const response = await axios.post("/users/register", userData);
+            return response.data;
+        } catch (error) {
+            return rejectWithValue(error.response.data);
+        }
+    }
+);
+
+export const getUserProfile = createAsyncThunk(
+    "users/profile",
     async (_, { rejectWithValue }) => {
         try {
-            const response = await axios.post("/api/logout");
+            const response = await axios.get("/users/profile");
             return response.data;
         } catch (error) {
             return rejectWithValue(error.response.data);

@@ -43,15 +43,3 @@ export const getProfile = () => async (dispatch) => {
         dispatch({ type: "USER_GET_PROFILE_FAIL", payload: error.message });
     }
 };
-
-export const logout = () => async (dispatch) => {
-    try {
-        dispatch({ type: "USER_LOGOUT_REQUEST" });
-
-        const response = await axios.get(process.env.API_URL + "/users/logout");
-
-        dispatch({ type: "USER_LOGOUT_SUCCESS", payload: response.data });
-    } catch (error) {
-        dispatch({ type: "USER_LOGOUT_FAIL", payload: error.message });
-    }
-};

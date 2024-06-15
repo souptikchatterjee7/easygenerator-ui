@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { loginUser, logoutUser } from "../actions/userThunks";
+import { loginUser, registerUser, getUserProfile } from "../actions/userThunks";
 
 const initialState = {
     isAuthenticated: false,
@@ -23,16 +23,29 @@ const userReducer = createReducer(initialState, (builder) => {
             state.loading = false;
             state.error = action.payload;
         })
-        .addCase(logoutUser.pending, (state) => {
+        .addCase(registerUser.pending, (state) => {
             state.loading = true;
             state.error = null;
         })
-        .addCase(logoutUser.fulfilled, (state) => {
+        .addCase(registerUser.fulfilled, (state) => {
             state.loading = false;
             state.isAuthenticated = false;
             state.user = null;
         })
-        .addCase(logoutUser.rejected, (state, action) => {
+        .addCase(registerUser.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        })
+        .addCase(getUserProfile.pending, (state) => {
+            state.loading = true;
+            state.error = null;
+        })
+        .addCase(getUserProfile.fulfilled, (state) => {
+            state.loading = false;
+            state.isAuthenticated = false;
+            state.user = null;
+        })
+        .addCase(getUserProfile.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload;
         });
