@@ -21,13 +21,11 @@
         "start": "react-scripts start",
         "start:stg": "react-scripts start stg",
         "start:prod": "react-scripts start prod",
-        "prepare": "husky install .husky",
         "lint": "npx eslint src/",
         "pretty": "npx pretty-quick --staged",
         "prettify": "prettier --write .",
         "lintify": "npm run lint -- --fix",
-        "fix": "npm run prettify && npm run lintify",
-        "pre-commit": "npm run pretty && npm run lint"
+        "fix": "npm run prettify && npm run lintify"
     },
     "eslintConfig": {
         "extends": [
@@ -54,7 +52,6 @@
         "eslint": "^8.57.0",
         "eslint-plugin-react": "^7.34.2",
         "globals": "^15.4.0",
-        "husky": "^9.0.11",
         "typescript-eslint": "^7.13.0"
     }
 }
