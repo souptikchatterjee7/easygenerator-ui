@@ -7,7 +7,7 @@ export const loginUser = createAsyncThunk(
     async (userData, { rejectWithValue }) => {
         try {
             const response = await axios.post(
-                API_URL + "/users/login",
+                API_URL + "users/login",
                 userData
             );
             console.log(response);
@@ -24,7 +24,7 @@ export const registerUser = createAsyncThunk(
     async (userData, { rejectWithValue }) => {
         try {
             const response = await axios.post(
-                API_URL + "/users/register",
+                API_URL + "users/register",
                 userData
             );
             console.log(response);
@@ -40,7 +40,7 @@ export const getUserProfile = createAsyncThunk(
     "users/profile",
     async (_, { rejectWithValue }) => {
         try {
-            const response = await axios.get(API_URL + "/users/profile");
+            const response = await axios.get(API_URL + "users/profile");
             console.log(response);
             return response.data;
         } catch (error) {

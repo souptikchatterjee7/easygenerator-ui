@@ -1,8 +1,29 @@
 import React from "react";
 import styles from "../styles/Input.module.css";
+import PropTypes from "prop-types";
 
-const Input = () => {
-    return <div></div>;
+const Input = ({ id, type, label, placeholder, value, onChange }) => {
+    return (
+        <div>
+            <label htmlFor={id}>{label}</label>
+            <input
+                type={type}
+                id={id}
+                value={value}
+                placeholder={placeholder}
+                onChange={onChange}
+            />
+        </div>
+    );
+};
+
+Input.propTypes = {
+    id: PropTypes.string,
+    type: PropTypes.string,
+    label: PropTypes.string.isRequired,
+    placeholder: PropTypes.string,
+    value: PropTypes.string,
+    onChange: PropTypes.func
 };
 
 export default Input;

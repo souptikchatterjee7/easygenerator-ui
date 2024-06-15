@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../store/actions/userThunks";
+import Input from "../components/input";
+import Button from "../components/button";
 // import { useSelector } from "react-redux";
 
 const Login = () => {
@@ -17,23 +19,21 @@ const Login = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <label htmlFor="email">Email:</label>
-            <input
-                type="email"
+            <Input
                 id="email"
-                value={email}
+                type="email"
+                placeholder="eg. johndoe@abc.xyz"
+                label="Email ID"
                 onChange={(e) => setEmail(e.target.value)}
-                required
             />
-            <label htmlFor="password">Password:</label>
-            <input
-                type="password"
+            <Input
                 id="password"
-                value={password}
+                type="password"
+                placeholder="eg. ********"
+                label="Password"
                 onChange={(e) => setPassword(e.target.value)}
-                required
             />
-            <button type="submit">Login</button>
+            <Button type="submit" label="Login now" onClick={handleSubmit} />
         </form>
     );
 };
