@@ -5,7 +5,8 @@ const initialState = {
     isAuthenticated: false,
     user: null,
     loading: false,
-    error: null
+    error: null,
+    authenticationToken: null
 };
 
 const userReducer = createReducer(initialState, (builder) => {
@@ -16,12 +17,13 @@ const userReducer = createReducer(initialState, (builder) => {
         })
         .addCase(loginUser.fulfilled, (state, action) => {
             state.loading = false;
-            state.isAuthenticated = true;
-            state.user = action.payload;
+            state.isAuthenticated = false;
+            state.authenticationToken = action.token;
+            state.user = null;
         })
         .addCase(loginUser.rejected, (state, action) => {
             state.loading = false;
-            state.error = action.payload;
+            state.error = action.payload.message;
         })
         .addCase(registerUser.pending, (state) => {
             state.loading = true;
@@ -34,7 +36,7 @@ const userReducer = createReducer(initialState, (builder) => {
         })
         .addCase(registerUser.rejected, (state, action) => {
             state.loading = false;
-            state.error = action.payload;
+            state.error = action.payload.message;
         })
         .addCase(getUserProfile.pending, (state) => {
             state.loading = true;
@@ -42,12 +44,12 @@ const userReducer = createReducer(initialState, (builder) => {
         })
         .addCase(getUserProfile.fulfilled, (state) => {
             state.loading = false;
-            state.isAuthenticated = false;
-            state.user = null;
+            state.isAuthenticated = true;
+            state.user = action.payload;
         })
         .addCase(getUserProfile.rejected, (state, action) => {
             state.loading = false;
-            state.error = action.payload;
+            state.error = action.payload.message;
         });
 });
 
