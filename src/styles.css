@@ -1,4 +1,30 @@
 :root {
     --white: #ffffff;
     --blue: #1b72e8;
+    --black: #14213d;
+    --darkGrey: #666666;
+    --grey: #999999;
+    --lightGrey: #dddddd;
+    --red: #c01f1f;
+    --background: #f5f8fb;
+    --bigHeading: 24px;
+    --heading: 18px;
+    --subHeading: 16px;
+    --normal: 14px;
+    --footNote: 12px;
+    --regular: 400;
+    --medium: 500;
+    --semiBold: 600;
+}
+
+* {
+    font-family: "Poppins", sans-serif;
+    outline: 0;
+    margin: 0;
+    padding: 0;
+    color: var(--black);
+    line-height: 1.5;
+    box-sizing: border-box;
+    font-size: var(--normal);
+    font-weight: var(--regular);
 }

@@ -4,6 +4,7 @@ import Application from "./components/application";
 import Login from "./components/login";
 import Signup from "./components/signup";
 import Loader from "./components/loader";
+import "./styles.css";
 import { useSelector } from "react-redux";
 
 const App = () => {

@@ -32,8 +32,8 @@ const userReducer = createReducer(initialState, (builder) => {
                 console.log(action);
                 state.isLoading = false;
                 state.isAuthenticated = true;
-                state.authenticationToken = action.payload.token;
-                state.user = action.payload.user;
+                state.authenticationToken = action.payload?.token;
+                state.user = action.payload?.user;
             }
         )
         .addMatcher(
@@ -46,7 +46,7 @@ const userReducer = createReducer(initialState, (builder) => {
             (state, action) => {
                 console.log(action);
                 state.isLoading = false;
-                state.error = action.payload.message;
+                state.error = action.payload?.message;
             }
         )
         .addMatcher(
@@ -55,7 +55,7 @@ const userReducer = createReducer(initialState, (builder) => {
                 console.log(action);
                 state.isLoading = false;
                 state.isAuthenticated = true;
-                state.user = action.payload.user;
+                state.user = action.payload?.user;
             }
         );
 });
