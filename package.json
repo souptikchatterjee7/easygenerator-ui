@@ -21,10 +21,13 @@
         "start": "react-scripts start",
         "start:stg": "react-scripts start stg",
         "start:prod": "react-scripts start prod",
-        "build": "react-scripts build",
-        "build:stg": "react-scripts build stg",
-        "build:prod": "react-scripts build prod",
-        "prettify": "prettier --write ."
+        "prepare": "husky install .husky",
+        "lint": "npx eslint src/",
+        "pretty": "npx pretty-quick --staged",
+        "prettify": "prettier --write .",
+        "lintify": "npm run lint -- --fix",
+        "fix": "npm run prettify && npm run lintify",
+        "pre-commit": "npm run pretty && npm run lint"
     },
     "eslintConfig": {
         "extends": [
@@ -43,5 +46,18 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.5.0",
+        "@typescript-eslint/parser": "^7.13.0",
+        "eslint": "^8.57.0",
+        "eslint-plugin-react": "^7.34.2",
+        "globals": "^15.4.0",
+        "typescript-eslint": "^7.13.0"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run pre-commit"
+        }
     }
 }

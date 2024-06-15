@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-// import { signup } from "../actions/auth";
+import { signup } from "../actions/api";
 
 const SignUp = () => {
     const [email, setEmail] = useState("");
@@ -10,7 +10,7 @@ const SignUp = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // dispatch(signup({ email, name, password }));
+        dispatch(signup({ email, name, password }));
     };
 
     return (
