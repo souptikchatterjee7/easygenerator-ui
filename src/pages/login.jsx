@@ -1,29 +1,59 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../store/actions/userThunks";
 import Input from "../components/input";
 import Button from "../components/button";
-// import { useSelector } from "react-redux";
+import { checkProfileValidations, getDeviceId } from "../util";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
     const dispatch = useDispatch();
+    const device = getDeviceId();
+    const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const HandleSubmit = (e) => {
         e.preventDefault();
-        dispatch(loginUser(email, password));
+        const validationObj = checkProfileValidations(
+            "",
+            false,
+            email,
+            password
+        );
+        if (!validationObj.success) {
+            setError(validationObj.error);
+            return;
+        }
+        setError("");
+        dispatch(loginUser({ email, password, device }));
     };
 
-    // const user = useSelector((state) => state.user.user);
+    const ClearState = () => {
+        setEmail("");
+        setPassword("");
+    };
+
+    const user = useSelector((state) => state.user.user);
+    const apiError = useSelector((state) => state.user.error);
+
+    useEffect(() => {
+        if (user) {
+            navigate("/home");
+            ClearState();
+        }
+    }, [user]);
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form>
             <Input
                 id="email"
                 type="email"
                 placeholder="eg. johndoe@abc.xyz"
                 label="Email ID"
+                value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />
             <Input
@@ -31,9 +61,11 @@ const Login = () => {
                 type="password"
                 placeholder="eg. ********"
                 label="Password"
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <Button type="submit" label="Login now" onClick={handleSubmit} />
+            <p>{error || apiError}</p>
+            <Button type="submit" label="Login now" onClick={HandleSubmit} />
         </form>
     );
 };
