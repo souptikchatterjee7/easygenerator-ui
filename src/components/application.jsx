@@ -1,12 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { getUserProfile } from "../store/actions/userThunks";
+// import { useDispatch } from "react-redux";
+// import { getUserProfile } from "../store/actions/userThunks";
 
 const Application = () => {
     const user = useSelector((state) => state.user.user);
-    const dispatch = useDispatch();
-    dispatch(getUserProfile());
+    // const dispatch = useDispatch();
+    // dispatch(getUserProfile());
 
     return (
         <div>
