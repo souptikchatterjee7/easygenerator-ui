@@ -21,6 +21,20 @@ const Login = () => {
     const navigate = useNavigate();
     const device = getDeviceId();
     const token = getAuthenticationToken();
+
+    const ClearState = () => {
+        setEmail("");
+        setPassword("");
+    };
+
+    const GoToHome = () => {
+        navigate("/home");
+    };
+
+    const GoToRegister = () => {
+        navigate("/register");
+    };
+
     if (token && token !== "") {
         GoToHome();
     }
@@ -39,19 +53,6 @@ const Login = () => {
         }
         setError("");
         dispatch(loginUser({ email, password, device }));
-    };
-
-    const ClearState = () => {
-        setEmail("");
-        setPassword("");
-    };
-
-    const GoToHome = () => {
-        navigate("/home");
-    };
-
-    const GoToRegister = () => {
-        navigate("/register");
     };
 
     const user = useSelector((state) => state.user.user);

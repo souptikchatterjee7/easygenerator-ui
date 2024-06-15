@@ -63,3 +63,7 @@ export function getAuthenticationToken() {
 export function setAuthenticationToken(value) {
     localStorage.setItem("easygenerator|authToken", value);
 }
+
+export function deleteAuthenticationToken() {
+    localStorage.removeItem("easygenerator|authToken");
+}
