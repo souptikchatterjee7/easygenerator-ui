@@ -1,6 +1,6 @@
 {
     "name": "easygenerator-ui",
-    "version": "0.1.0",
+    "version": "1.00.00",
     "private": true,
     "dependencies": {
         "@reduxjs/toolkit": "^2.2.5",
@@ -19,9 +19,11 @@
     },
     "scripts": {
         "start": "react-scripts start",
+        "start:stg": "react-scripts start stg",
+        "start:prod": "react-scripts start prod",
         "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject",
+        "build:stg": "react-scripts build stg",
+        "build:prod": "react-scripts build prod",
         "prettify": "prettier --write ."
     },
     "eslintConfig": {
