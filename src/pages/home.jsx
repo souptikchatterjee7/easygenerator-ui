@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 // import { useDispatch } from "react-redux";
 // import { getUserProfile } from "../store/actions/userThunks";
 
-const Application = () => {
+const Home = () => {
     const user = useSelector((state) => state.user.user);
     // const dispatch = useDispatch();
     // dispatch(getUserProfile());
@@ -19,4 +19,4 @@ const Application = () => {
     );
 };
 
-export default Application;
+export default Home;

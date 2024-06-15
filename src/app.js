@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Application from "./pages/application";
+import Home from "./pages/home";
 import Login from "./pages/login";
-import Signup from "./pages/signup";
+import Register from "./pages/register";
 import Loader from "./components/loader";
 import "./styles.css";
 import { useSelector } from "react-redux";
@@ -14,9 +14,9 @@ const App = () => {
         <div>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Application />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/signup" element={<Signup />} />
+                    <Route path="/" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/home" element={<Home />} />
                 </Routes>
             </BrowserRouter>
             {isLoading && <Loader />}

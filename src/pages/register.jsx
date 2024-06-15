@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../store/actions/userThunks";
 
-const SignUp = () => {
+const Register = () => {
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
@@ -44,4 +44,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default Register;
