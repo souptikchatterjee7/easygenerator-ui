@@ -3,7 +3,12 @@ import { useDispatch } from "react-redux";
 import { loginUser } from "../store/actions/userThunks";
 import Input from "../components/input";
 import Button from "../components/button";
-import { checkProfileValidations, getDeviceId } from "../util";
+import {
+    checkProfileValidations,
+    getDeviceId,
+    getAuthenticationToken,
+    setAuthenticationToken
+} from "../util";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -12,8 +17,12 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const dispatch = useDispatch();
-    const device = getDeviceId();
     const navigate = useNavigate();
+    const device = getDeviceId();
+    const token = getAuthenticationToken();
+    if (token && token !== "") {
+        navigate("/home");
+    }
 
     const HandleSubmit = (e) => {
         e.preventDefault();
@@ -38,13 +47,15 @@ const Login = () => {
 
     const user = useSelector((state) => state.user.user);
     const apiError = useSelector((state) => state.user.error);
+    const apiToken = useSelector((state) => state.user.authenticationToken);
 
     useEffect(() => {
-        if (user) {
+        if (user && apiToken) {
+            setAuthenticationToken(apiToken);
             navigate("/home");
             ClearState();
         }
-    }, [user]);
+    }, [user, apiToken, navigate]);
 
     return (
         <form>
