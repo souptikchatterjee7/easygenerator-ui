@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { signup } from "../actions/auth";
+// import { signup } from "../actions/auth";
 
-const Signup = () => {
+const SignUp = () => {
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
@@ -10,7 +10,7 @@ const Signup = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(signup({ email, name, password }));
+        // dispatch(signup({ email, name, password }));
     };
 
     return (
@@ -44,4 +44,4 @@ const Signup = () => {
     );
 };
 
-export default Signup;
+export default SignUp;
