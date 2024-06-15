@@ -7,7 +7,7 @@ import Loader from "./components/loader";
 import { useSelector } from "react-redux";
 
 const App = () => {
-    const isLoading = useSelector((state) => state.auth.isLoading);
+    const isLoading = useSelector((state) => state.user.isLoading);
 
     return (
         <div>

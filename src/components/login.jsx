@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../store/actions/userThunks";
+// import { useSelector } from "react-redux";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -11,6 +12,8 @@ const Login = () => {
         e.preventDefault();
         dispatch(loginUser(email, password));
     };
+
+    // const user = useSelector((state) => state.user.user);
 
     return (
         <form onSubmit={handleSubmit}>
