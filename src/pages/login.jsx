@@ -23,11 +23,13 @@ const Login = () => {
     const device = getDeviceId();
     const token = getAuthenticationToken();
 
+    // set all input to empty on successful login
     const ClearState = () => {
         setEmail("");
         setPassword("");
     };
 
+    // validate and call login api
     const HandleSubmit = (e) => {
         e.preventDefault();
         const validationObj = checkProfileValidations(
@@ -44,19 +46,20 @@ const Login = () => {
         dispatch(loginUser({ email, password, device }));
     };
 
-    const user = useSelector((state) => state.user.user);
     const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
     const apiError = useSelector((state) => state.user.error);
     const apiToken = useSelector((state) => state.user.authenticationToken);
 
+    // if login successful, redirect to application
     useEffect(() => {
-        if (user && apiToken) {
+        if (apiToken) {
             setAuthenticationToken(apiToken);
             navigate("/home");
             ClearState();
         }
-    }, [user, apiToken, isAuthenticated]);
+    }, [apiToken, isAuthenticated]);
 
+    // if token exists, re-direct to application
     useEffect(() => {
         if (token && token !== "") {
             navigate("/home");

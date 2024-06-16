@@ -8,6 +8,7 @@ import { getUserProfile } from "../store/actions/userThunks";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+    // get token if already exists
     const token = getAuthenticationToken();
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -18,8 +19,10 @@ const Home = () => {
 
     useEffect(() => {
         if (token && token !== "") {
+            // calls get user profile api if token exists
             GetUserProfile();
         } else {
+            // navigate to login if token doesnt exist
             navigate("/");
         }
     }, [token, navigate]);

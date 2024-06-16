@@ -1,11 +1,17 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { loginUser, registerUser, getUserProfile } from "../actions/userThunks";
 
+// user reducre to maintain all user related states
 const initialState = {
+    // checks if user is authenticated
     isAuthenticated: false,
+    // checks if user is defined
     user: null,
+    // checks if api is still loading
     isLoading: false,
+    // check for api errors
     error: null,
+    // check for auth token from apis
     authenticationToken: null
 };
 
@@ -33,7 +39,6 @@ const userReducer = createReducer(initialState, (builder) => {
                 state.isLoading = false;
                 state.isAuthenticated = true;
                 state.authenticationToken = action.payload?.token;
-                state.user = action.payload?.user;
             }
         )
         .addMatcher(

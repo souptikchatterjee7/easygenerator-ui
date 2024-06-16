@@ -3,6 +3,7 @@ import axios from "axios";
 import { API_URL } from "../../config";
 import { getAuthenticationToken, getDeviceId } from "../../util";
 
+// user login api calls
 export const loginUser = createAsyncThunk(
     "users/login",
     async (userData, { fulfillWithValue, rejectWithValue }) => {
@@ -18,6 +19,7 @@ export const loginUser = createAsyncThunk(
     }
 );
 
+// user registration api calls
 export const registerUser = createAsyncThunk(
     "users/register",
     async (userData, { fulfillWithValue, rejectWithValue }) => {
@@ -33,6 +35,7 @@ export const registerUser = createAsyncThunk(
     }
 );
 
+// user profile fetching api
 export const getUserProfile = createAsyncThunk(
     "users/profile",
     async (_, { fulfillWithValue, rejectWithValue }) => {

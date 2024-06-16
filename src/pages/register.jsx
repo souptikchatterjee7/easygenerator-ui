@@ -24,11 +24,14 @@ const Register = () => {
     const device = getDeviceId();
     const token = getAuthenticationToken();
 
+    // set all input to empty on successful registration
     const ClearState = () => {
+        setName("");
         setEmail("");
         setPassword("");
     };
 
+    // validate and call register api
     const HandleSubmit = (e) => {
         e.preventDefault();
         const validationObj = checkProfileValidations(
@@ -45,19 +48,20 @@ const Register = () => {
         dispatch(registerUser({ name, email, password, device }));
     };
 
-    const user = useSelector((state) => state.user.user);
     const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
     const apiError = useSelector((state) => state.user.error);
     const apiToken = useSelector((state) => state.user.authenticationToken);
 
+    // if registration successful, redirect to application
     useEffect(() => {
-        if (user && apiToken) {
+        if (apiToken) {
             setAuthenticationToken(apiToken);
             navigate("/home");
             ClearState();
         }
-    }, [user, apiToken, isAuthenticated]);
+    }, [apiToken, isAuthenticated]);
 
+    // if token exists, re-direct to application
     useEffect(() => {
         if (token && token !== "") {
             navigate("/home");
