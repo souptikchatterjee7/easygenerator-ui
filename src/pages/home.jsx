@@ -16,10 +16,10 @@ const Home = () => {
         dispatch(getUserProfile());
     };
 
-    if (!token) {
-        navigate("/");
-    } else {
+    if (token && token !== "") {
         GetUserProfile();
+    } else {
+        navigate("/");
     }
 
     const user = useSelector((state) => state.user.user);

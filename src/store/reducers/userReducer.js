@@ -31,7 +31,6 @@ const userReducer = createReducer(initialState, (builder) => {
                     registerUser.fulfilled.type
                 ].includes(action.type),
             (state, action) => {
-                console.log(action);
                 state.isLoading = false;
                 state.isAuthenticated = true;
                 state.authenticationToken = action.payload?.token;
@@ -46,7 +45,6 @@ const userReducer = createReducer(initialState, (builder) => {
                     getUserProfile.rejected.type
                 ].includes(action.type),
             (state, action) => {
-                console.log(action);
                 state.isLoading = false;
                 state.error = action.payload?.message;
             }
@@ -54,7 +52,6 @@ const userReducer = createReducer(initialState, (builder) => {
         .addMatcher(
             (action) => [getUserProfile.fulfilled.type].includes(action.type),
             (state, action) => {
-                console.log(action);
                 state.isLoading = false;
                 state.isAuthenticated = true;
                 state.user = action.payload?.user;

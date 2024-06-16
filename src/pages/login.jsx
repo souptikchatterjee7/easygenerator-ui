@@ -29,7 +29,6 @@ const Login = () => {
     };
 
     if (token && token !== "") {
-        console.log(token);
         navigate("/home");
     }
 
