@@ -56,14 +56,13 @@ const Register = () => {
             navigate("/home");
             ClearState();
         }
-    }, [user, apiToken, isAuthenticated, navigate]);
+    }, [user, apiToken, isAuthenticated]);
 
     useEffect(() => {
-        console.log("login ==> " + token);
         if (token && token !== "") {
             navigate("/home");
         }
-    }, [token, navigate]);
+    }, [token]);
 
     return (
         <div className="container">
