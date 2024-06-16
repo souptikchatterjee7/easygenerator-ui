@@ -1,0 +1,21 @@
+.Link {
+    color: var(--grey);
+    margin-top: 16px;
+    text-align: center;
+}
+
+.success,
+.error {
+    cursor: pointer;
+    font-weight: var(--medium);
+    text-decoration: none;
+}
+
+.error {
+    color: var(--red);
+}
+
+.success {
+    color: var(--blue);
+    margin-left: 8px;
+}

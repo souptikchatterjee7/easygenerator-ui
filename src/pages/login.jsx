@@ -12,6 +12,7 @@ import {
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/Login.module.css";
+import Link from "../components/link";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -27,16 +28,9 @@ const Login = () => {
         setPassword("");
     };
 
-    const GoToHome = () => {
-        navigate("/home");
-    };
-
-    const GoToRegister = () => {
-        navigate("/register");
-    };
-
     if (token && token !== "") {
-        GoToHome();
+        console.log(token);
+        navigate("/home");
     }
 
     const HandleSubmit = (e) => {
@@ -62,7 +56,7 @@ const Login = () => {
     useEffect(() => {
         if (user && apiToken) {
             setAuthenticationToken(apiToken);
-            GoToHome();
+            navigate("/home");
             ClearState();
         }
     }, [user, apiToken, navigate]);
@@ -94,10 +88,12 @@ const Login = () => {
                     label="Login now"
                     onClick={HandleSubmit}
                 />
-                <p className={styles.registerLink}>
-                    Don’t have an account?
-                    <a onClick={GoToRegister}>Register now</a>
-                </p>
+                <Link
+                    text="Don’t have an account?"
+                    href="/register"
+                    type="success"
+                    label="Register now"
+                />
             </form>
         </div>
     );

@@ -2,9 +2,3 @@
     text-align: center;
     margin-top: 32px;
 }
-
-.logout a {
-    color: var(--red);
-    font-weight: var(--medium);
-    cursor: pointer;
-}

@@ -28,16 +28,8 @@ const Register = () => {
         setPassword("");
     };
 
-    const GoToHome = () => {
-        navigate("/home");
-    };
-
-    const GoToLogin = () => {
-        navigate("/");
-    };
-
     if (token && token !== "") {
-        GoToHome();
+        navigate("/home");
     }
 
     const HandleSubmit = (e) => {
@@ -63,7 +55,7 @@ const Register = () => {
     useEffect(() => {
         if (user && apiToken) {
             setAuthenticationToken(apiToken);
-            GoToHome();
+            navigate("/home");
             ClearState();
         }
     }, [user, apiToken, navigate]);
@@ -120,7 +112,7 @@ const Register = () => {
                 />
                 <p className={styles.loginLink}>
                     Already have an account?
-                    <a onClick={GoToLogin}>Login now</a>
+                    <a href="/">Login now</a>
                 </p>
             </form>
         </div>
