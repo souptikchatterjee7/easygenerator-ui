@@ -1,5 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { loginUser, registerUser, getUserProfile } from "../actions/userThunks";
+// import { deleteAuthenticationToken } from "../../util";
 
 const initialState = {
     isAuthenticated: false,

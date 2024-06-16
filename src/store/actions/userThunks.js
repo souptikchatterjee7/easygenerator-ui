@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { API_URL } from "../../config";
+import { getAuthenticationToken, getDeviceId } from "../../util";
 
 export const loginUser = createAsyncThunk(
     "users/login",
@@ -36,7 +37,12 @@ export const getUserProfile = createAsyncThunk(
     "users/profile",
     async (_, { fulfillWithValue, rejectWithValue }) => {
         try {
-            const response = await axios.get(API_URL + "users/profile");
+            const response = await axios.get(API_URL + "users/profile", {
+                headers: {
+                    Token: getAuthenticationToken(),
+                    Device: getDeviceId()
+                }
+            });
             return fulfillWithValue(response.data);
         } catch (error) {
             return rejectWithValue(error.response.data);

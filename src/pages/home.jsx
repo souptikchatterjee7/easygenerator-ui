@@ -1,17 +1,28 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styles from "../styles/Home.module.css";
-import { deleteAuthenticationToken } from "../util";
+import { deleteAuthenticationToken, getAuthenticationToken } from "../util";
 import Link from "../components/link";
-// import { useDispatch } from "react-redux";
-// import { getUserProfile } from "../store/actions/userThunks";
+import { useDispatch } from "react-redux";
+import { getUserProfile } from "../store/actions/userThunks";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-    // const dispatch = useDispatch();
-    // dispatch(getUserProfile());
+    const token = getAuthenticationToken();
+    const navigate = useNavigate();
+
+    const GetUserProfile = () => {
+        const dispatch = useDispatch();
+        dispatch(getUserProfile());
+    };
+
+    if (!token) {
+        navigate("/");
+    } else {
+        GetUserProfile();
+    }
 
     const user = useSelector((state) => state.user.user);
-    // const apiToken = useSelector((state) => state.user.authenticationToken);
 
     const logout = () => {
         deleteAuthenticationToken();
@@ -22,9 +33,9 @@ const Home = () => {
             <h1>Hello! {user?.name}</h1>
             <h2>Welcome to the application.</h2>
 
-            <p className={styles.logout}>
+            <div className={styles.logout}>
                 <Link type="error" label="Logout" href="/" onClick={logout} />
-            </p>
+            </div>
         </div>
     );
 };
