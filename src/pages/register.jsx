@@ -29,10 +29,6 @@ const Register = () => {
         setPassword("");
     };
 
-    if (token && token !== "") {
-        navigate("/home");
-    }
-
     const HandleSubmit = (e) => {
         e.preventDefault();
         const validationObj = checkProfileValidations(
@@ -50,6 +46,7 @@ const Register = () => {
     };
 
     const user = useSelector((state) => state.user.user);
+    const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
     const apiError = useSelector((state) => state.user.error);
     const apiToken = useSelector((state) => state.user.authenticationToken);
 
@@ -59,7 +56,14 @@ const Register = () => {
             navigate("/home");
             ClearState();
         }
-    }, [user, apiToken, navigate]);
+    }, [user, apiToken, isAuthenticated, navigate]);
+
+    useEffect(() => {
+        console.log("login ==> " + token);
+        if (token && token !== "") {
+            navigate("/home");
+        }
+    }, [token, navigate]);
 
     return (
         <div className="container">

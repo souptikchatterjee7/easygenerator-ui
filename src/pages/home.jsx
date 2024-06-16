@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import styles from "../styles/Home.module.css";
 import { deleteAuthenticationToken, getAuthenticationToken } from "../util";
@@ -10,17 +10,19 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
     const token = getAuthenticationToken();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const GetUserProfile = () => {
-        const dispatch = useDispatch();
         dispatch(getUserProfile());
     };
 
-    if (token && token !== "") {
-        GetUserProfile();
-    } else {
-        navigate("/");
-    }
+    useEffect(() => {
+        if (token && token !== "") {
+            GetUserProfile();
+        } else {
+            navigate("/");
+        }
+    }, [token, navigate]);
 
     const user = useSelector((state) => state.user.user);
 

@@ -1,6 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { loginUser, registerUser, getUserProfile } from "../actions/userThunks";
-// import { deleteAuthenticationToken } from "../../util";
 
 const initialState = {
     isAuthenticated: false,
@@ -54,7 +53,7 @@ const userReducer = createReducer(initialState, (builder) => {
             (state, action) => {
                 state.isLoading = false;
                 state.isAuthenticated = true;
-                state.user = action.payload?.user;
+                state.user = action.payload;
             }
         );
 });
