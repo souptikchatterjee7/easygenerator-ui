@@ -82,7 +82,11 @@ const Login = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <p className={styles.error}>* {error || apiError}</p>
+                {error || apiError ? (
+                    <p className={styles.error}>* {error || apiError}</p>
+                ) : (
+                    <></>
+                )}
                 <Button
                     type="submit"
                     label="Login now"

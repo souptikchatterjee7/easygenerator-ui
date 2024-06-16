@@ -104,7 +104,7 @@ const Register = () => {
                 {error || apiError ? (
                     <p className={styles.error}>* {error || apiError}</p>
                 ) : (
-                    <p className={styles.error}>* {error || apiError}</p>
+                    <></>
                 )}
                 <Button
                     type="submit"

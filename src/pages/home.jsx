@@ -7,9 +7,11 @@ import Link from "../components/link";
 // import { getUserProfile } from "../store/actions/userThunks";
 
 const Home = () => {
-    const user = useSelector((state) => state.user.user);
     // const dispatch = useDispatch();
     // dispatch(getUserProfile());
+
+    const user = useSelector((state) => state.user.user);
+    // const apiToken = useSelector((state) => state.user.authenticationToken);
 
     const logout = () => {
         deleteAuthenticationToken();

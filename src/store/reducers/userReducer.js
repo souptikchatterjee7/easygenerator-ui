@@ -14,9 +14,9 @@ const userReducer = createReducer(initialState, (builder) => {
         .addMatcher(
             (action) =>
                 [
-                    loginUser.pending,
-                    registerUser.pending,
-                    getUserProfile.pending
+                    loginUser.pending.type,
+                    registerUser.pending.type,
+                    getUserProfile.pending.type
                 ].includes(action.type),
             (state) => {
                 state.isLoading = true;
@@ -25,9 +25,10 @@ const userReducer = createReducer(initialState, (builder) => {
         )
         .addMatcher(
             (action) =>
-                [loginUser.fulfilled, registerUser.fulfilled].includes(
-                    action.type
-                ),
+                [
+                    loginUser.fulfilled.type,
+                    registerUser.fulfilled.type
+                ].includes(action.type),
             (state, action) => {
                 console.log(action);
                 state.isLoading = false;
@@ -39,9 +40,9 @@ const userReducer = createReducer(initialState, (builder) => {
         .addMatcher(
             (action) =>
                 [
-                    loginUser.rejected,
-                    registerUser.rejected,
-                    getUserProfile.rejected
+                    loginUser.rejected.type,
+                    registerUser.rejected.type,
+                    getUserProfile.rejected.type
                 ].includes(action.type),
             (state, action) => {
                 console.log(action);
@@ -50,7 +51,7 @@ const userReducer = createReducer(initialState, (builder) => {
             }
         )
         .addMatcher(
-            (action) => getUserProfile.fulfilled(action),
+            (action) => [getUserProfile.fulfilled.type].includes(action.type),
             (state, action) => {
                 console.log(action);
                 state.isLoading = false;
