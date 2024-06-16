@@ -12,6 +12,7 @@ import {
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/Register.module.css";
+import Link from "../components/link";
 
 const Register = () => {
     const [email, setEmail] = useState("");
@@ -110,10 +111,12 @@ const Register = () => {
                     label="Register now"
                     onClick={HandleSubmit}
                 />
-                <p className={styles.loginLink}>
-                    Already have an account?
-                    <a href="/">Login now</a>
-                </p>
+                <Link
+                    text="Already have an account?"
+                    href="/"
+                    type="success"
+                    label="Login now"
+                />
             </form>
         </div>
     );

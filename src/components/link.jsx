@@ -7,7 +7,7 @@ const Link = ({ text, type, label, href, onClick }) => {
         <p className={styles.Link}>
             {text}
             <a
-                className={`${type === "success" ? styles.success : styles.console.error}`}
+                className={`${type === "success" ? styles.success : styles.error}`}
                 href={href}
                 onClick={onClick}>
                 {label}
@@ -20,7 +20,7 @@ Link.propTypes = {
     text: PropTypes.string,
     type: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
-    href: PropTypes.isRequired,
+    href: PropTypes.string.isRequired,
     onClick: PropTypes.func
 };
 
